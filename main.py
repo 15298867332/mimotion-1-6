@@ -11,9 +11,9 @@ import pytz
 import requests
 
 # 开启根据地区天气情况降低步数（默认关闭）
-open_get_weather = sys.argv[3]
+open_get_weather = True
 # 设置获取天气的地区（上面开启后必填）如：area = "宁波"
-area = sys.argv[4]
+area = "苏州"
 
 # 以下如果看不懂直接默认就行只需改上面
 
@@ -75,10 +75,10 @@ def getBeijinTime():
         pattern = re.compile('\\d{4}-\\d{2}-\\d{2} (\\d{2}):\\d{2}:\\d{2}')
         find = re.search(pattern, result)
         hour = find.group(1)
-        min_ratio = max(math.ceil((int(hour) / 3) - 1), 0)
+        min_ratio = max(math.ceil((int(hour) / 1) - 6), 0)
         max_ratio = math.ceil(int(hour) / 3)
-        min_1 = 3500 * min_ratio
-        max_1 = 3500 * max_ratio
+        min_1 = 128 * min_ratio
+        max_1 = 444 * max_ratio
         min_1 = int(K * min_1)
         max_1 = int(K * max_1)
     else:
